@@ -1,0 +1,63 @@
+/* Global styles */
+*,body{
+    box-sizing: border-box;
+    margin:0px;
+    padding:0px;
+}
+
+/* Titulo || Black || Extra bold */
+@font-face {
+    font-family: "Roboto";
+    src:url("../fonts/Roboto/Roboto-Black.ttf") format("truetype");
+    font-weight: 900;
+}
+
+/* Subtitulo || Bold */
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+/* Descripcion || Regular */
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+    font-weight: 500;
+
+}
+
+
+.titulo{
+    font-family:"Roboto","sans-serif";
+    font-weight: 900;
+    font-size: 32px;
+    margin:0px;
+}
+
+.sub-titulo{
+    font-family: "Roboto","sans-serif";
+    font-weight: 700;
+    font-size:28px;
+    margin:0px;
+}
+
+.titulo-descripcion{
+    font-family: "Roboto","sans-serif";
+    font-weight: 500;
+    font-size: 20px;
+    margin:0px;
+}
+
+.descripcion{
+    font-family:"Roboto","sans-serif";
+    font-weight: 400;
+    font-size: 16px;
+    margin:0px;
+}
