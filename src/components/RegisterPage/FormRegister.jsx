@@ -1,37 +1,34 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 //Custom hook's
 import { useForm } from '../../hooks/useForm'
-import { checkingAuthentication } from '../../store/auth';
 
-export const FormLogin = () => {
-    //Redux
-    const dispatch = useDispatch();//Dispatch function
-    const { status } = useSelector(store => store.auth);
-
+export const FormRegister = () => {
 
     const initialState = {
         email:"",
         password:"",
+        name:"",
         rememberMe:true
     };
 
     const [ values, setValues,handleInputChange ] = useForm(initialState);
 
-    const onSubmit = (e) => {
-
-        e.preventDefault();
-        dispatch(checkingAuthentication(values.email,values.password));
-    }
-
 
     return (
-        <form className="formAuth" onSubmit={onSubmit}>
-            <h1 className="titulo">Hey,hello 👋</h1>
-            <p className="descripcion">Enter your information and start checking your files.</p>
-
+        <div className="formAuth">
+            <h1 className="titulo">Start backing up your files ⛅</h1>
+            <p className="descripcion">Complete register form and start protecting your files.</p>
+            
+            <h1 className="titulo-descripcion">Name</h1>
+            <input 
+                className="form form-control descripcion"
+                type="name"
+                name="name"
+                value={values.name}
+                onChange={handleInputChange}
+            />
             <h1 className="titulo-descripcion">Email</h1>
             <input 
                 className="form form-control descripcion"
@@ -60,15 +57,10 @@ export const FormLogin = () => {
                 />
                 <h1 className="descripcion">Remember me</h1>
             </div>
-            <button 
-                type="submit" 
-                className="btn btn-primary descripcion"
-                disabled={status === "checking"}
-            >
-                Login
-            </button>
+            <button type="primary" className="btn btn-primary descripcion">Register</button>
 
-            <p className="descripcion text-center">Don't have an account? <Link to={`/auth/register`} style={{textDecoration:"none"}}><b className="color">Sign up for free</b></Link></p>
-        </form>
+            <p className="descripcion text-center">Alredy have an account? <Link to={`/auth/login`} style={{textDecoration:"none"}}><b className="color">Login</b></Link></p>
+        </div>
     )
 }
+

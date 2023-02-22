@@ -1,7 +1,14 @@
 import React from 'react'
 
+//Component's
+import { InfoLogin } from '../components/LoginPage/InfoLogin'
+import { FormRegister } from '../components/RegisterPage/FormRegister'
+
 export const RegisterPage = () => {
     return (
-        <div>RegisterPage</div>
+        <>
+            <InfoLogin/>
+            <FormRegister/>
+        </>
     )
 }
