@@ -2,9 +2,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { loginToServer } from "../../store/auth/thunks";
+
 //Custom hook's
 import { useForm } from '../../hooks/useForm'
-import { checkingAuthentication } from '../../store/auth';
 
 export const FormLogin = () => {
     //Redux
@@ -23,7 +24,8 @@ export const FormLogin = () => {
     const onSubmit = (e) => {
 
         e.preventDefault();
-        dispatch(checkingAuthentication(values.email,values.password));
+        dispatch(loginToServer(values.email,values.password));
+
     }
 
 

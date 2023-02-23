@@ -1,10 +1,17 @@
+import { message } from 'antd';
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchSinToken } from '../../helpers/fetch';
 
 //Custom hook's
 import { useForm } from '../../hooks/useForm'
+import { registerToServer } from '../../store/auth/thunks';
 
 export const FormRegister = () => {
+    //Redux
+
+    const dispatch = useDispatch();
 
     const initialState = {
         email:"",
@@ -15,9 +22,15 @@ export const FormRegister = () => {
 
     const [ values, setValues,handleInputChange ] = useForm(initialState);
 
+    const handleRegisterUser = async(e) => {
+
+        e.preventDefault();
+        dispatch(registerToServer(values));
+
+    }
 
     return (
-        <div className="formAuth">
+        <form className="formAuth" onSubmit={handleRegisterUser}>
             <h1 className="titulo">Start backing up your files ⛅</h1>
             <p className="descripcion">Complete register form and start protecting your files.</p>
             
@@ -57,10 +70,15 @@ export const FormRegister = () => {
                 />
                 <h1 className="descripcion">Remember me</h1>
             </div>
-            <button type="primary" className="btn btn-primary descripcion">Register</button>
+            <button 
+                type="submit" 
+                className="btn btn-primary descripcion"
+            >
+                Register
+            </button>
 
             <p className="descripcion text-center">Alredy have an account? <Link to={`/auth/login`} style={{textDecoration:"none"}}><b className="color">Login</b></Link></p>
-        </div>
+        </form>
     )
 }
 

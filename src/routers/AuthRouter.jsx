@@ -5,7 +5,6 @@ import { Route, Routes } from 'react-router-dom';
 import { LoginPage } from '../pages/LoginPage'
 import { RegisterPage } from '../pages/RegisterPage'
 
-
 //Styles for all component's
 import "../css/Auth.css";
 

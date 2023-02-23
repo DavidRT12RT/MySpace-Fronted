@@ -9,7 +9,8 @@ export const authSlice = createSlice({
         name:null,
         displayName:null,
         photoURL:null,
-        payloadMessage:null
+        payloadMessage:null,
+        token:null
     },
     reducers: {
         login:(state,{payload}) => {
@@ -20,7 +21,11 @@ export const authSlice = createSlice({
             state.name = payload.user.name;
             state.photoURL = payload.user.photoURL || "";
             state.payloadMessage = "Inicio de secion con exito!";
-            //Establecer token en localstorage para mantener secion
+            state.token  = payload.token;
+
+            //Set token to localStorage
+            localStorage.setItem("token",payload.token);
+
         },
         logout:(state,{payload}) => {
             state.status = "not-authenticated";
@@ -28,13 +33,16 @@ export const authSlice = createSlice({
             state.email = null;
             state.displayName = null;
             state.photoURL = null;
-            state.payloadMessage = payload.msg;
+            localStorage.removeItem("token");
         },
         checkingCredentials:(state) => {
             state.status = "checking";
+        },
+        stopCheckingCredentials:(state) => {
+            state.status = "not-authenticated";
         }
     }
 });
 
 //Actions creatos functions
-export const { login,logout,checkingCredentials } = authSlice.actions;
+export const { login,logout,checkingCredentials,stopCheckingCredentials } = authSlice.actions;
