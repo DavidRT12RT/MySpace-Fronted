@@ -17,8 +17,8 @@ export const InfoLogin = () => {
                 </EffectComposer>
             </Canvas>
             <div className="information">
-                <h1 className="titulo">Digital platform <br/>for distance <b className="color">learning</b></h1>
-                <p className="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam aliquam at nam amet sapiente doloribus eveniet quod ratione!</p>
+                <h1 className="titulo">Digital platform <br/>for save all your<b className="color"> files</b></h1>
+                <p className="descripcion">Save all your files in one place and start not worry for your local space!</p>
             </div>
         </div>
     )

@@ -24,14 +24,14 @@ export const FormLogin = () => {
     const onSubmit = (e) => {
 
         e.preventDefault();
-        dispatch(loginToServer(values.email,values.password));
+        dispatch(loginToServer(values));
 
     }
 
 
     return (
         <form className="formAuth" onSubmit={onSubmit}>
-            <h1 className="titulo">Hey,hello 👋</h1>
+            <h1 className="titulo">Hello 👋</h1>
             <p className="descripcion">Enter your information and start checking your files.</p>
 
             <h1 className="titulo-descripcion">Email</h1>

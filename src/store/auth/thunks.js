@@ -1,10 +1,8 @@
-import moment from "moment";
-
 import { message } from "antd";
 import { fetchConToken, fetchSinToken } from "../../helpers/fetch";
 import { checkingCredentials, login, logout, stopCheckingCredentials } from "./authSlice";
 
-export const loginToServer = (email,password) => {
+export const loginToServer = ({email,password,rememberMe}) => {
     return async(dispatch) => {
         dispatch(checkingCredentials());
         //Peticion para login 
@@ -17,7 +15,7 @@ export const loginToServer = (email,password) => {
         }
 
         //Login con exito!
-        dispatch(login(body));
+        dispatch(login({...body,rememberMe}));
 
     }
 }
@@ -35,25 +33,19 @@ export const registerToServer = (values) => {
         }
 
         //Registro con exito!
-        dispatch(login(body));
+        dispatch(login({...body,rememberMe:values.rememberMe}));
     }
 }
 
 export const startChecking = () => {
     return async(dispatch) => {
-
         dispatch(checkingCredentials());
         //Peticion de revalidacion
-        const resp = await fetchConToken("/auth/renew");
+        const resp = await fetchConToken("/auth/renew",undefined,"POST");
         const body = await resp.json();
 
-        //Token no valido!
+        //Not token in localstorage or token is not valid
         if(resp.status !== 200) return dispatch(logout());
-
-        //Seteando nuevo token
-        localStorage.setItem("token",body.token);
-        localStorage.setItem("token-init-date",moment());
-
-        dispatch(login(body));
+        dispatch(login({...body,rememberMe:true}));           
     }
 }

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import moment from 'moment';
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -14,6 +15,7 @@ export const authSlice = createSlice({
     },
     reducers: {
         login:(state,{payload}) => {
+            console.log(payload);
             state.status = "authenticated";
             state.id = payload.user.id;
             state.email = payload.user.email;
@@ -23,9 +25,11 @@ export const authSlice = createSlice({
             state.payloadMessage = "Inicio de secion con exito!";
             state.token  = payload.token;
 
-            //Set token to localStorage
-            localStorage.setItem("token",payload.token);
-
+            //Set token to localStorage if users marks this
+            if(payload.rememberMe){
+                localStorage.setItem("token",payload.token);
+                localStorage.setItem("token-init",moment());
+            }
         },
         logout:(state,{payload}) => {
             localStorage.clear();
