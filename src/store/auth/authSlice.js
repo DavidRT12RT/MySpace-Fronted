@@ -28,11 +28,13 @@ export const authSlice = createSlice({
 
         },
         logout:(state,{payload}) => {
+            localStorage.clear();
             state.status = "not-authenticated";
             state.id = null;
             state.email = null;
             state.displayName = null;
             state.photoURL = null;
+            state.token = null;
             localStorage.removeItem("token");
         },
         checkingCredentials:(state) => {

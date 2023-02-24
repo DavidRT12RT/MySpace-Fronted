@@ -1,0 +1,20 @@
+/* Styles for my space page */
+.contextMenu {
+    background-color:#fff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+    width: 400px;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: absolute;
+    z-index: 1000;
+    transition: all 200ms ease; 
+    font-size: 18px;
+}
+
+/* each son of contextMenu will have a hover effect*/
+.contextMenu > div:hover{
+    background-color: #6c757d60;
+}
