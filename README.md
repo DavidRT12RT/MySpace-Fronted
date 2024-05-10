@@ -1,7 +1,6 @@
 # Fronted MySpace 
 Fronted program for my space 
 see backend repository rigth here:
-https://github.com/DavidRT12RT/SanzApp-Backend
 
 ## Tecnologies used:
 1. ReactJS
